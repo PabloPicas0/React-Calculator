@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import Displayer from "./Components/displayer";
+import Inputs from "./Components/inputs";
+import keysBank from "./Components/inputsBank";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container-fluid min-vh-100 d-flex justify-content-center align-items-center bg-dark">
+      <div className="wrapper border border-info rounded bg-secondary ps-3 py-3">
+        <Displayer />
+        <div className="row row-cols-5 p-0 mx-0">
+          {keysBank.map((elements, index) => {
+            return (
+              <Inputs
+                key={index}
+                keyDisplayed={elements.keyDisplayed}
+                id={elements.id}
+                darkColor={elements.darkColor}
+                cols={elements.keyStyleCol}
+                width={elements.keyStyleBtn}
+              />
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
