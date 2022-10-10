@@ -9,7 +9,10 @@ function App() {
   const [mathDisplayed, setMathDisplayed] = useState([0])
 
   const handleClick = (event) => {
-    setMathDisplayed((prev) => [...prev, event.target.textContent])
+    if (event.target.value === "") {
+      setMathDisplayed((arrOfValues) => (arrOfValues = [0]));
+    }
+    setMathDisplayed((prev) => [...prev, event.target.value])
   }
 
   return (
@@ -23,6 +26,7 @@ function App() {
                 key={index}
                 keyDisplayed={elements.keyDisplayed}
                 id={elements.id}
+                value={elements.value}
                 darkColor={elements.darkColor}
                 cols={elements.keyStyleCol}
                 width={elements.keyStyleBtn}
