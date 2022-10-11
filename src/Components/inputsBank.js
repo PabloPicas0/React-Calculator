@@ -16,7 +16,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: 0
+    value: "back"
   },
   {
     keyDisplayed: "%",
