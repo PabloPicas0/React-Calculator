@@ -7,7 +7,7 @@ const Inputs = (props) => {
         id={props.id}
         type="button"
         className={`btn ${props.width} p-0 text-center ${props.darkColor}`}
-        onClick={props.handleClick}
+        onClick={() => {props.handleClick(props.value)}}
         value={props.value}>
         {props.keyDisplayed}
       </button>
