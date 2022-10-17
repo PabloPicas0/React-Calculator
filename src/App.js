@@ -37,7 +37,7 @@ function App() {
     setInitialValue(["0"]);
     setInputs([]);
     setAppend(true);
-    setResult()
+    setResult();
   };
 
   const handleNumbers = (key) => {
@@ -56,7 +56,7 @@ function App() {
       }
 
       setInputs(newInputs);
-    } else if (/[+*\/-]/.test(newInputs[newInputs.length - 1])) {
+    } else if (/[+*\/-/\.]/.test(newInputs[newInputs.length - 1])) {
       console.log("error too many operators");
     } else {
       setInputs([...inputs, key]);
@@ -75,6 +75,12 @@ function App() {
           switch (operators) {
             case "+":
               return accumulator + elements;
+            case "-":
+              return accumulator - elements;
+            case "/":
+              return accumulator / elements;
+            case "*":
+              return accumulator * elements
             default:
               return accumulator;
           }
