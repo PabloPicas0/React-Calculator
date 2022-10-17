@@ -8,7 +8,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: "AC"
+    value: "AC",
   },
   {
     keyDisplayed: <FontAwesomeIcon icon={faDeleteLeft} />,
@@ -16,7 +16,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: "back"
+    value: "back",
   },
   {
     keyDisplayed: "%",
@@ -24,7 +24,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: "%"
+    value: "%",
   },
   {
     keyDisplayed: "/",
@@ -32,7 +32,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: "/"
+    value: "/",
   },
   {
     keyDisplayed: "7",
@@ -40,7 +40,7 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: 7
+    value: 7,
   },
   {
     keyDisplayed: "8",
@@ -48,7 +48,7 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: 8
+    value: 8,
   },
   {
     keyDisplayed: "9",
@@ -56,7 +56,7 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: 9
+    value: 9,
   },
   {
     keyDisplayed: "x",
@@ -64,7 +64,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: "x"
+    value: "*",
   },
   {
     keyDisplayed: "4",
@@ -72,7 +72,7 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: 4
+    value: 4,
   },
   {
     keyDisplayed: "5",
@@ -80,7 +80,7 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: 5
+    value: 5,
   },
   {
     keyDisplayed: "6",
@@ -88,15 +88,15 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: 6
+    value: 6,
   },
   {
     keyDisplayed: "-",
-    id: "substract",
+    id: "subtract",
     darkColor: "colors",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: "-"
+    value: "-",
   },
   {
     keyDisplayed: "1",
@@ -104,7 +104,7 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: 1
+    value: 1,
   },
   {
     keyDisplayed: "2",
@@ -112,7 +112,7 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: 2
+    value: 2,
   },
   {
     keyDisplayed: "3",
@@ -120,7 +120,7 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: 3
+    value: 3,
   },
   {
     keyDisplayed: "+",
@@ -128,7 +128,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: "+"
+    value: "+",
   },
   {
     keyDisplayed: "0",
@@ -136,7 +136,7 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: 0
+    value: 0,
   },
   {
     keyDisplayed: ".",
@@ -144,7 +144,7 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col p-0 mb-2 me-2",
     keyStyleBtn: "btn-secondary w-100 buttons-size",
-    value: "."
+    value: ".",
   },
   {
     keyDisplayed: "=",
@@ -152,7 +152,7 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col-6 p-0",
     keyStyleBtn: "equals-width",
-    value: "="
+    value: "=",
   },
 ];
 

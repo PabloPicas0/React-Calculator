@@ -6,15 +6,16 @@ import Inputs from "./Components/inputs";
 import keysBank from "./Components/inputsBank";
 
 function App() {
-  const [value, setValue] = useState(["0"]);
+  const [initalValue, setInitialValue] = useState(["0"]);
   const [inputs, setInputs] = useState([]);
+  const [append, setAppend] = useState(true);
+  const [result, setResult] = useState();
 
   useEffect(() => {
     if (inputs.length === 0) {
-      setValue(["0"]);
+      setInitialValue(["0"]);
     } else {
-      setValue(inputs);
-      console.log(inputs);
+      setInitialValue(inputs);
     }
   }, [inputs]);
 
@@ -23,11 +24,8 @@ function App() {
       case /AC/.test(key):
         clearHooks();
         break;
-      case /[0-9.]/.test(key):
+      case /^[0-9+\-*.\/]*$/.test(key):
         handleNumbers(key);
-        break;
-      case /[+*/-]/.test(key):
-        // hendleOperators();
         break;
       case /=/.test(key):
         // hendleMath();
@@ -36,18 +34,40 @@ function App() {
   };
 
   const clearHooks = () => {
-    setValue(["0"]);
+    setInitialValue(["0"]);
     setInputs([]);
+    setAppend(true);
   };
 
   const handleNumbers = (key) => {
-    setInputs(prevInputs => [...prevInputs, key])
+    let newInputs = [...inputs];
+
+    if (typeof key === "number") {
+      let number = key;
+
+      if (append) {
+        newInputs.push(key);
+        setAppend(false);
+      } else {
+        number = newInputs[newInputs.length - 1];
+        number = number * 10 + key;
+        newInputs[newInputs.length - 1] = number;
+      }
+
+      setInputs(newInputs);
+      
+    } else if (/[+*\/-]/.test(newInputs[newInputs.length - 1])) {
+      console.log("error too many operators");
+    } else {
+      setInputs([...inputs, key]);
+      setAppend(true);
+    }
   };
 
   return (
     <div className="container-fluid min-vh-100 d-flex justify-content-center align-items-center bg-dark">
       <div className="wrapper border border-info rounded bg-secondary ps-3 py-3">
-        <Displayer displayer={value} />
+        <Displayer displayer={initalValue} />
         <div className="row row-cols-5 p-0 mx-0">
           {keysBank.map((elements, index) => {
             return (
