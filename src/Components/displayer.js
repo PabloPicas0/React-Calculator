@@ -6,7 +6,8 @@ const Displayer = (props) => {
     <>
       <ReactSwitch className="mb-4 pe-2" checked={true} />
       <div id="display" className="text-end mb-5 text-light text-break">
-        {props.displayer}
+        <p>{props.displayer}</p>
+        <p>{props.result}</p>
       </div>
     </>
   );

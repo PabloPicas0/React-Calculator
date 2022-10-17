@@ -28,7 +28,7 @@ function App() {
         handleNumbers(key);
         break;
       case /=/.test(key):
-        // hendleMath();
+        handleMath();
         break;
     }
   };
@@ -37,6 +37,7 @@ function App() {
     setInitialValue(["0"]);
     setInputs([]);
     setAppend(true);
+    setResult()
   };
 
   const handleNumbers = (key) => {
@@ -55,7 +56,6 @@ function App() {
       }
 
       setInputs(newInputs);
-      
     } else if (/[+*\/-]/.test(newInputs[newInputs.length - 1])) {
       console.log("error too many operators");
     } else {
@@ -64,10 +64,31 @@ function App() {
     }
   };
 
+  const handleMath = () => {
+    const result = inputs.reduce((accumulator, elements, index, array) => {
+      if (typeof elements === "number") {
+        if (index === 0) {
+          return elements;
+        } else {
+          const operators = array[index - 1];
+
+          switch (operators) {
+            case "+":
+              return accumulator + elements;
+            default:
+              return accumulator;
+          }
+        }
+      }
+      return accumulator;
+    }, 0);
+    setResult(result);
+  };
+
   return (
     <div className="container-fluid min-vh-100 d-flex justify-content-center align-items-center bg-dark">
       <div className="wrapper border border-info rounded bg-secondary ps-3 py-3">
-        <Displayer displayer={initalValue} />
+        <Displayer displayer={initalValue} result={result} />
         <div className="row row-cols-5 p-0 mx-0">
           {keysBank.map((elements, index) => {
             return (
