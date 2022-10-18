@@ -24,6 +24,9 @@ function App() {
       case /AC/.test(key):
         clearHooks();
         break;
+      case /back/.test(key):
+        deleteOne();
+        break;
       case /^[0-9+\-*.\/]*$/.test(key):
         handleNumbers(key);
         break;
@@ -39,6 +42,10 @@ function App() {
     setAppend(true);
     setResult();
   };
+
+  const deleteOne = () => {
+
+  }
 
   const handleNumbers = (key) => {
     let newInputs = [...inputs];
@@ -80,7 +87,7 @@ function App() {
             case "/":
               return accumulator / elements;
             case "*":
-              return accumulator * elements
+              return accumulator * elements;
             default:
               return accumulator;
           }
@@ -93,9 +100,9 @@ function App() {
 
   return (
     <div className="container-fluid min-vh-100 d-flex justify-content-center align-items-center bg-dark">
-      <div className="wrapper border border-info rounded bg-secondary ps-3 py-3">
+      <div className="wrapper rounded bg-secondary">
         <Displayer displayer={initalValue} result={result} />
-        <div className="row row-cols-5 p-0 mx-0">
+        <div className="row row-cols-4 mx-0">
           {keysBank.map((elements, index) => {
             return (
               <Inputs

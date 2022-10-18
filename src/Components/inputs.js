@@ -6,7 +6,7 @@ const Inputs = (props) => {
       <button
         id={props.id}
         type="button"
-        className={`btn ${props.width} p-0 text-center ${props.darkColor}`}
+        className={`btn ${props.width} p-0 ${props.darkColor}`}
         onClick={() => {props.handleClick(props.value)}}
         value={props.value}>
         {props.keyDisplayed}
