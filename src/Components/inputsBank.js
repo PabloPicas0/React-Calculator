@@ -139,9 +139,9 @@ const keysBank = [
     value: 0,
   },
   {
-    keyDisplayed: ".",
+    keyDisplayed: ",",
     id: "decimal",
-    darkColor: "",
+    darkColor: "colors",
     keyStyleCol: "col p-0",
     keyStyleBtn: "w-100 buttons-size",
     value: ".",

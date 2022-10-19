@@ -95,12 +95,13 @@ function App() {
       }
       return accumulator;
     }, 0);
+    console.log(inputs);
     setResult(result);
   };
 
   return (
-    <div className="container-fluid min-vh-100 d-flex justify-content-center align-items-center bg-dark">
-      <div className="wrapper rounded bg-secondary">
+    <div className="container-fluid min-vh-100 d-flex justify-content-center align-items-center con-bg">
+      <div className="wrapper rounded-2 bg-secondary">
         <Displayer displayer={initalValue} result={result} />
         <div className="row row-cols-4 mx-0">
           {keysBank.map((elements, index) => {
