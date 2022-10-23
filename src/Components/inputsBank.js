@@ -139,7 +139,7 @@ const keysBank = [
     value: 0,
   },
   {
-    keyDisplayed: ",",
+    keyDisplayed: ".",
     id: "decimal",
     darkColor: "colors",
     keyStyleCol: "col p-0",

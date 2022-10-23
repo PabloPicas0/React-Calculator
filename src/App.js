@@ -6,18 +6,8 @@ import Inputs from "./Components/inputs";
 import keysBank from "./Components/inputsBank";
 
 function App() {
-  const [initalValue, setInitialValue] = useState(["0"]);
-  const [inputs, setInputs] = useState([]);
-  const [append, setAppend] = useState(true);
-  const [result, setResult] = useState();
-
-  useEffect(() => {
-    if (inputs.length === 0) {
-      setInitialValue(["0"]);
-    } else {
-      setInitialValue(inputs);
-    }
-  }, [inputs]);
+  const [expression, setExpression] = useState("");
+  const [currentValue, setCurrentValue] = useState("");
 
   const handleClick = (key) => {
     switch (true) {
@@ -27,8 +17,11 @@ function App() {
       case /back/.test(key):
         deleteOne();
         break;
-      case /^[0-9+\-*.\/]*$/.test(key):
+      case /^[0-9]*$/.test(key):
         handleNumbers(key);
+        break;
+      case /[+\-*/.]/.test(key):
+        handleOperators(key);
         break;
       case /=/.test(key):
         handleMath();
@@ -37,72 +30,63 @@ function App() {
   };
 
   const clearHooks = () => {
-    setInitialValue(["0"]);
-    setInputs([]);
-    setAppend(true);
-    setResult();
+    setExpression("");
+    setCurrentValue("");
   };
 
   const deleteOne = () => {
-
-  }
+    setExpression(prev => prev.split("").slice(0, -1).join().replace(/,/g, ""))
+    setCurrentValue((prev) => prev.split("").slice(0, -1).join().replace(/,/g, ""));
+  };
 
   const handleNumbers = (key) => {
-    let newInputs = [...inputs];
+    if (key === 0 && expression === "") {
+      console.log("Error: Multple 0 detected");
+      return;
+    } else if (typeof key === "number") {
+      setExpression((prev) => prev + key);
+      setCurrentValue((prev) => prev + key);
+    }
+  };
 
-    if (typeof key === "number") {
-      let number = key;
+  const handleOperators = (key) => {
+    if (expression === "" && /[+\-*/.]/.test(key)) {
+      return;
+    }
+    if (key === ".") {
+      const arrOfValues = currentValue.split(" ");
+      const multiDecimal = arrOfValues[arrOfValues.length - 1].indexOf(".") > -1 && key === ".";
 
-      if (append) {
-        newInputs.push(key);
-        setAppend(false);
-      } else {
-        number = newInputs[newInputs.length - 1];
-        number = number * 10 + key;
-        newInputs[newInputs.length - 1] = number;
-      }
-
-      setInputs(newInputs);
-    } else if (/[+*\/-/\.]/.test(newInputs[newInputs.length - 1])) {
-      console.log("error too many operators");
-    } else {
-      setInputs([...inputs, key]);
-      setAppend(true);
+      setCurrentValue(multiDecimal ? currentValue : currentValue.concat(key));
+      setExpression(multiDecimal ? currentValue : currentValue.concat(key));
+      console.log(multiDecimal, arrOfValues);
+    }
+    if (/[+\-*/]/.test(key)) {
+      setExpression((prev) => prev + key);
+      setCurrentValue((prev) => prev + key);
     }
   };
 
   const handleMath = () => {
-    const result = inputs.reduce((accumulator, elements, index, array) => {
-      if (typeof elements === "number") {
-        if (index === 0) {
-          return elements;
-        } else {
-          const operators = array[index - 1];
-
-          switch (operators) {
-            case "+":
-              return accumulator + elements;
-            case "-":
-              return accumulator - elements;
-            case "/":
-              return accumulator / elements;
-            case "*":
-              return accumulator * elements;
-            default:
-              return accumulator;
-          }
-        }
+    if (expression === "") {
+      return;
+    }
+      const chceckForDecimal = expression.split(" ").includes(".")
+      let result;
+      if(chceckForDecimal) {
+        result = parseFloat(eval(currentValue)).toFixed(4)
+      } else {
+        result = parseFloat(eval(currentValue))
       }
-      return accumulator;
-    }, 0);
-    console.log(inputs);
-    setResult(result);
+      setExpression((prev) => prev + "=" + result);
+      setCurrentValue(result);
+      console.log(result);
   };
 
   return (
     <div className="container-fluid min-vh-100 d-flex justify-content-center align-items-center con-bg">
       <div className="wrapper rounded-2 bg-secondary">
-        <Displayer displayer={initalValue} result={result} />
+        <Displayer expression={expression} currentValue={currentValue} />
         <div className="row row-cols-4 mx-0">
           {keysBank.map((elements, index) => {
             return (

@@ -3,9 +3,15 @@ import React from "react";
 const Displayer = (props) => {
   return (
     <>
-      <div id="display" className="text-end text-light text-break pb-3 pt-4">
-        <p className="m-0 mb-2 result">{props.result}</p>
-        <p className="m-0 math">{props.displayer}</p>
+      <div
+        id="mathDisplay"
+        className="text-end text-light text-break pb-3 pt-4 display">
+        <p className="m-0 mb-2 math">
+          {props.expression === "" ? "" : props.expression}
+        </p>
+        <p id="display" className="m-0 result">
+          {props.currentValue === "" ? 0 : props.currentValue}
+        </p>
       </div>
     </>
   );
