@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 import Displayer from "./Components/displayer";
@@ -35,8 +35,12 @@ function App() {
   };
 
   const deleteOne = () => {
-    setExpression(prev => prev.split("").slice(0, -1).join().replace(/,/g, ""))
-    setCurrentValue((prev) => prev.split("").slice(0, -1).join().replace(/,/g, ""));
+    setExpression((prev) =>
+      prev.split("").slice(0, -1).join().replace(/,/g, "")
+    );
+    setCurrentValue((prev) =>
+      prev.split("").slice(0, -1).join().replace(/,/g, "")
+    );
   };
 
   const handleNumbers = (key) => {
@@ -54,7 +58,7 @@ function App() {
       return;
     }
     if (key === ".") {
-      const arrOfValues = currentValue.split(" ");
+      const arrOfValues = currentValue.split("");
       const multiDecimal = arrOfValues[arrOfValues.length - 1].indexOf(".") > -1 && key === ".";
 
       setCurrentValue(multiDecimal ? currentValue : currentValue.concat(key));
@@ -68,19 +72,19 @@ function App() {
   };
 
   const handleMath = () => {
+    const chceckForDecimal = expression.split("").includes(".");
+    let result;
     if (expression === "") {
       return;
     }
-      const chceckForDecimal = expression.split(" ").includes(".")
-      let result;
-      if(chceckForDecimal) {
-        result = parseFloat(eval(currentValue)).toFixed(4)
-      } else {
-        result = parseFloat(eval(currentValue))
-      }
-      setExpression((prev) => prev + "=" + result);
-      setCurrentValue(result);
-      console.log(result);
+    if (chceckForDecimal) {
+      result = parseFloat(eval(currentValue)).toFixed(4);
+    } else {
+      result = parseFloat(eval(currentValue));
+    }
+    setExpression((prev) => prev + "=" + result);
+    setCurrentValue(result);
+    console.log(chceckForDecimal);
   };
 
   return (
