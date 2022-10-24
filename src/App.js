@@ -58,7 +58,7 @@ function App() {
       return;
     }
     if (key === ".") {
-      const arrOfValues = currentValue.split("");
+      const arrOfValues = currentValue.split(" ");
       const multiDecimal = arrOfValues[arrOfValues.length - 1].indexOf(".") > -1 && key === ".";
 
       setCurrentValue(multiDecimal ? currentValue : currentValue.concat(key));

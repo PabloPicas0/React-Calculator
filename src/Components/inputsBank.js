@@ -24,7 +24,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0",
     keyStyleBtn: "w-100 buttons-size",
-    value: "%",
+    value: " % ",
   },
   {
     keyDisplayed: "/",
@@ -32,7 +32,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0",
     keyStyleBtn: "w-100 buttons-size",
-    value: "/",
+    value: " / ",
   },
   {
     keyDisplayed: "7",
@@ -64,7 +64,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0",
     keyStyleBtn: "w-100 buttons-size",
-    value: "*",
+    value: " * ",
   },
   {
     keyDisplayed: "4",
@@ -96,7 +96,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0",
     keyStyleBtn: "w-100 buttons-size",
-    value: "-",
+    value: " - ",
   },
   {
     keyDisplayed: "1",
@@ -128,7 +128,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0",
     keyStyleBtn: "w-100 buttons-size",
-    value: "+",
+    value: " + ",
   },
   {
     keyDisplayed: "0",
@@ -152,7 +152,7 @@ const keysBank = [
     darkColor: "",
     keyStyleCol: "col p-0 equals-bg",
     keyStyleBtn: "equals-width text-white",
-    value: "=",
+    value: " = ",
   },
 ];
 
