@@ -16,15 +16,6 @@
   padding-right: 25px;
 }
 
-.result {
-  font-size: 1rem;
-}
-
-.math {
-  font-size: 1.3rem;
-  letter-spacing: 1px;
-}
-
 @media (max-width: 305px) {
   #display {
     padding-right: 24px;

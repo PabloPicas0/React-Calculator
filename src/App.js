@@ -78,11 +78,11 @@ function App() {
       return;
     }
     if (chceckForDecimal) {
-      result = parseFloat(eval(currentValue)).toFixed(4);
+      result = parseFloat(eval(currentValue).toFixed(4));
     } else {
       result = parseFloat(eval(currentValue));
     }
-    setExpression((prev) => prev + "=" + result);
+    setExpression((prev) => prev + " = " + result);
     setCurrentValue(result);
     console.log(chceckForDecimal);
   };
