@@ -73,18 +73,22 @@ function App() {
 
   const handleMath = () => {
     const chceckForDecimal = expression.split("").includes(".");
+    const filterExpression = currentValue
+      .replace(/\s+/g, "")
+      .match(/(\*|\+|\/|-)?(\.|-)?\d+/g).join('');
     let result;
+
     if (expression === "") {
       return;
     }
     if (chceckForDecimal) {
-      result = parseFloat(eval(currentValue).toFixed(4));
+      result = parseFloat(eval(filterExpression).toFixed(4));
     } else {
-      result = parseFloat(eval(currentValue));
+      result = parseFloat(eval(filterExpression));
     }
     setExpression((prev) => prev + " = " + result);
     setCurrentValue(result);
-    console.log(chceckForDecimal);
+    console.log(filterExpression);
   };
 
   return (
