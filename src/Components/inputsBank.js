@@ -24,7 +24,7 @@ const keysBank = [
     darkColor: "colors",
     keyStyleCol: "col p-0",
     keyStyleBtn: "w-100 buttons-size",
-    value: " % ",
+    value: "%",
   },
   {
     keyDisplayed: "/",

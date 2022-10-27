@@ -20,7 +20,7 @@ function App() {
       case /^[0-9]*$/.test(key):
         handleNumbers(key);
         break;
-      case /[+\-*/.]/.test(key):
+      case /[+\-*/.%]/.test(key):
         handleOperators(key);
         break;
       case /=/.test(key):
@@ -54,18 +54,19 @@ function App() {
   };
 
   const handleOperators = (key) => {
-    if (expression === "" && /[+\-*/.]/.test(key)) {
+    if (expression === "" && /[+\-*/.%]/.test(key)) {
       return;
     }
     if (key === ".") {
       const arrOfValues = currentValue.split(" ");
-      const multiDecimal = arrOfValues[arrOfValues.length - 1].indexOf(".") > -1 && key === ".";
+      const multiDecimal =
+        arrOfValues[arrOfValues.length - 1].indexOf(".") > -1 && key === ".";
 
       setCurrentValue(multiDecimal ? currentValue : currentValue.concat(key));
       setExpression(multiDecimal ? currentValue : currentValue.concat(key));
       console.log(multiDecimal, arrOfValues);
     }
-    if (/[+\-*/]/.test(key)) {
+    if (/[+\-*/%]/.test(key)) {
       setExpression((prev) => prev + key);
       setCurrentValue((prev) => prev + key);
     }
@@ -75,16 +76,30 @@ function App() {
     const chceckForDecimal = expression.split("").includes(".");
     const filterExpression = currentValue
       .replace(/\s+/g, "")
-      .match(/(\*|\+|\/|-)?(\.|-)?\d+/g).join('');
+      .match(/(\*|\+|\/|-)?(\.|-)?\d+/g)
+      .join("");
     let result;
 
-    if (expression === "") {
-      return;
-    }
-    if (chceckForDecimal) {
-      result = parseFloat(eval(filterExpression).toFixed(4));
-    } else {
-      result = parseFloat(eval(filterExpression));
+    switch (true) {
+      case expression === "":
+        return;
+      case currentValue.includes("%"):
+        const newValues = [];
+        currentValue.split(" ").map((e) => {
+          if (e.includes("%")) {
+            newValues.push(parseFloat(e) / 100);
+          } else {
+            newValues.push(e);
+          }
+        });
+        const toEval = newValues.join("");
+        result = parseFloat(eval(toEval));
+        break;
+      case chceckForDecimal:
+        result = parseFloat(eval(filterExpression).toFixed(4));
+        break;
+      default:
+        result = parseFloat(eval(filterExpression));
     }
     setExpression((prev) => prev + " = " + result);
     setCurrentValue(result);
