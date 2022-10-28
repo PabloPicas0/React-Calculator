@@ -102,7 +102,7 @@ function App() {
         result = parseFloat(eval(filterExpression));
     }
     setExpression((prev) => prev + " = " + result);
-    setCurrentValue(result);
+    setCurrentValue(result.toString());
     console.log(filterExpression);
   };
 
